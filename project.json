@@ -1,0 +1,9 @@
+{
+  "name": "alexa_jackson",
+  "description": "Alexa skill for Jackson household",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::111093261446:role/apex",
+  "profile": "apex",
+  "environment": {}
+}
