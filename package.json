@@ -4,7 +4,7 @@
   "description": "Alexa skill for Jackson household",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "teenytest test/lib/**/*.test.js --helper test/helper.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/stevenjackson/alexa_jackson/issues"
   },
-  "homepage": "https://github.com/stevenjackson/alexa_jackson#readme"
+  "homepage": "https://github.com/stevenjackson/alexa_jackson#readme",
+  "devDependencies": {
+    "teenytest": "^5.0.2"
+  },
+  "dependencies": {
+    "alexa-sdk": "^1.0.10"
+  }
 }

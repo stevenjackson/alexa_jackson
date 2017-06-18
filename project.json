@@ -5,5 +5,6 @@
   "timeout": 5,
   "role": "arn:aws:iam::111093261446:role/apex",
   "profile": "apex",
-  "environment": {}
+  "environment": {},
+  "runtime": "nodejs6.10"
 }
