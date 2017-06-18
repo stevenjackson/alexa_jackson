@@ -6,5 +6,10 @@
   "role": "arn:aws:iam::111093261446:role/apex",
   "profile": "apex",
   "environment": {},
-  "runtime": "nodejs6.10"
+  "runtime": "nodejs6.10",
+  "handler": "lib.default",
+  "hooks": {
+    "build": "../../node_modules/.bin/webpack --config ../../webpack.config.js --bail",
+    "clean": "rm -fr lib"
+  }
 }

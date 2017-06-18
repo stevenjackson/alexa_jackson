@@ -39,7 +39,7 @@ const handlers = {
   }
 }
 
-exports.handler = function(event, context) {
+export default function(event, context) {
   var alexa = Alexa.handler(event, context);
   alexa.APP_ID = APP_ID;
   alexa.registerHandlers(handlers);
