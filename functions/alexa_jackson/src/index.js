@@ -8,11 +8,12 @@ const stopMessage = function() {
 }
 
 const STEVEN_FACTS = [
-  "Steven wants to be a xenozoobiologist when he grows up",
+  "Steven wants to be a xeno zoo biologist when he grows up",
   "Steven's birthday is September 2nd",
-  "Steven was born in Houston, TX",
-  "Steven is the tallest 2nd grader at Avon East",
-  "Steven loves to eat pizza"
+  "Steven was born in Houston, Texas",
+  "Steven is the tallest 2nd grader at A von East",
+  "Steven loves to eat pizza",
+  "Steven is a Lego Master Builder"
 ]
 
 const ZACK_FACTS = [
@@ -20,16 +21,36 @@ const ZACK_FACTS = [
   "Zack's birthday is September 18th",
   "Zack was born in Cleveland, Ohio",
   "Zack loves to eat cheese",
-  "Zack knows what the fox says and has Gangham Style"
+  "Zack knows what the fox says and has Gangham Style",
+  "Zack sits down to put on his shoes",
+  "Zack likes to dance"
 ]
+
+const pick = function(list) {
+  let index = Math.floor(Math.random() * list.length);
+  return list[index];
+}
+
+const tellMeAbout = function(name) {
+  let facts = []
+  if(name == "Zachary" || name == "Zack") {
+    facts =  ZACK_FACTS;
+  } else if(name == "Steven") {
+    facts = STEVEN_FACTS;
+  } else {
+    facts = pick([STEVEN_FACTS, ZACK_FACTS])
+  }
+  return pick(facts)
+}
+
 
 const handlers = {
   'LaunchRequest': function() {
     this.emit(':tell', "Would you like to hear about Steven or Zack?");
   },
-  'TellMeAbout': function(a, b, c) {
-    console.log(a, b, c);
-    this.emit(':tell', "Sure");
+  'TellMeAbout': function() {
+    console.log("Tell me about" + this.event.request.intent.slots.Name.value);
+    this.emit(':tell', tellMeAbout(this.event.request.intent.slots.Name.value));
   },
   'AMAZON.CancelIntent': function () {
     this.emit(':tell', stopMessage());
