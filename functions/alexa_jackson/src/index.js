@@ -3,9 +3,8 @@ const Alexa = require('alexa-sdk');
 const APP_ID = "amzn1.ask.skill.1eb99632-170a-4fde-8186-4c551d2d30dd";
 const SKILL_NAME = "jackson";
 
-const stopMessage = function() {
-  return "See you later, aligator";
-}
+const stopMessage = "See you later, aligator";
+const tellMeAboutReprompt = "Say tell me about Steven"
 
 const STEVEN_FACTS = [
   "Steven wants to be a xeno zoo biologist when he grows up",
@@ -17,7 +16,7 @@ const STEVEN_FACTS = [
 ]
 
 const ZACK_FACTS = [
-  "Zack weighs 26 pounds",
+  "Zack weighs 30 pounds",
   "Zack's birthday is September 18th",
   "Zack was born in Cleveland, Ohio",
   "Zack loves to eat cheese",
@@ -46,17 +45,17 @@ const tellMeAbout = function(name) {
 
 const handlers = {
   'LaunchRequest': function() {
-    this.emit(':tell', "Would you like to hear about Steven or Zack?");
+    this.emit(':ask', "Would you like to hear about Steven or Zack?", tellMeAboutReprompt);
   },
   'TellMeAbout': function() {
     console.log("Tell me about" + this.event.request.intent.slots.Name.value);
-    this.emit(':tell', tellMeAbout(this.event.request.intent.slots.Name.value));
+    this.emit(':ask', tellMeAbout(this.event.request.intent.slots.Name.value), tellMeAboutReprompt);
   },
   'AMAZON.CancelIntent': function () {
-    this.emit(':tell', stopMessage());
+    this.emit(':tell', stopMessage);
   },
   'AMAZON.StopIntent': function () {
-    this.emit(':tell', stopMessage());
+    this.emit(':tell', stopMessage);
   }
 }
 
