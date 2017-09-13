@@ -51,6 +51,9 @@ const handlers = {
     console.log("Tell me about" + this.event.request.intent.slots.Name.value);
     this.emit(':ask', tellMeAbout(this.event.request.intent.slots.Name.value), tellMeAboutReprompt);
   },
+  'TellMeAJoke': function() {
+    this.emit(':ask', "Why do crabs never give to charity?  <break time='5s'/> Because they're shellfish", "Say tell me a joke");
+  },
   'AMAZON.CancelIntent': function () {
     this.emit(':tell', stopMessage);
   },
